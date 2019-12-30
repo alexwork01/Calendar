@@ -8,7 +8,7 @@ const Footer = () => (
     <StyledLink target="_blank" href="https://github.com/alexwork01/Calendar">
       <Image src={gitHubImg} />
       <StyledTitle inverted as="h3">
-        Git Hub
+        GitHub repository
       </StyledTitle>
     </StyledLink>
   </FooterWrapper>
