@@ -1,25 +1,24 @@
 import React, {
   memo,
-  useCallback,
-  useLayoutEffect,
   useRef,
-  useState
+  useState,
+  useCallback,
+  useLayoutEffect
 } from 'react';
 import { Grid, Responsive } from 'semantic-ui-react';
+import throttle from 'lodash.throttle';
 
 import {
-  getFilteredPersons,
   getMonthType,
-  scrollToComponent
+  scrollToComponent,
+  getFilteredPersons
 } from '../../helpers';
-import { CalendarTable } from './CalendarTable';
-import { CalendarColumn } from './CalendarColumn';
-import { TablePlaceholder } from './TablePlaceholder';
+import { CalendarTable, CalendarColumn, TablePlaceholder } from './components';
 import {
   ButtonTop,
   CalendarList,
-  CalendarWrapper,
-  TableWrapper
+  TableWrapper,
+  CalendarWrapper
 } from './styled';
 
 const Calendar = memo(props => {
@@ -31,37 +30,34 @@ const Calendar = memo(props => {
     setActiveMonthIndex
   } = props;
 
+  const [isButtonVisible, setIsButtonVisible] = useState(false);
+
   const listRef = useRef();
   const tableRef = useRef();
 
   const monthType = getMonthType(activeMonthIndex, persons);
   const filteredPersons = getFilteredPersons(activeMonthIndex, persons);
 
-  const scrollToTop = useCallback(
-    () =>
-      window.scrollTo({
-        top: 0,
-        left: 0,
-        behavior: 'smooth'
-      }),
-    []
-  );
+  const scrollToTop = useCallback(() => window.scrollTo(0, 0), []);
   const scrollToTable = useCallback(() => scrollToComponent(tableRef), []);
-  const scrollToMonths = useCallback(() => {
-    return listRef.current.getBoundingClientRect().top > 0
-      ? scrollToTop()
-      : scrollToComponent(listRef);
-  }, [listRef]);
 
-  const [isButtonVisible, setIsButtonVisible] = useState(false);
+  const handleButtonClick = useCallback(
+    () =>
+      listRef.current.getBoundingClientRect().top > -1
+        ? scrollToTop()
+        : scrollToComponent(listRef),
+    [listRef]
+  );
+
+  const handleScroll = throttle(
+    () =>
+      window.scrollY > 100
+        ? setIsButtonVisible(true)
+        : setIsButtonVisible(false),
+    300
+  );
 
   useLayoutEffect(() => {
-    const handleScroll = () => {
-      return window.scrollY > 200
-        ? setIsButtonVisible(true)
-        : setIsButtonVisible(false);
-    };
-
     window.addEventListener('scroll', handleScroll);
 
     return () => window.removeEventListener('scroll', handleScroll);
@@ -100,7 +96,7 @@ const Calendar = memo(props => {
       </Grid>
       <Responsive maxWidth={767}>
         {isButtonVisible && (
-          <ButtonTop circular icon="chevron up" onClick={scrollToMonths} />
+          <ButtonTop circular icon="chevron up" onClick={handleButtonClick} />
         )}
       </Responsive>
     </CalendarWrapper>

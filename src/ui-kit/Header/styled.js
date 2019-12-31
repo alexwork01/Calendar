@@ -1,5 +1,6 @@
 import styled, { keyframes } from 'styled-components';
 import { Segment } from 'semantic-ui-react';
+
 import bgImage from '../../assets/bg.jpg';
 
 const gradientBG = keyframes`
@@ -28,6 +29,7 @@ export const HeaderWrapper = styled(Segment)`
   padding: 0 0 0 0;
   border: 0 !important;
   border-width: 0 !important;
+  user-select: none;
 
   @media (min-width: 768px) {
     min-height: 44em;

@@ -1,6 +1,5 @@
 import React, { memo, useEffect } from 'react';
 import 'react-notifications/lib/notifications.css';
-
 import {
   NotificationContainer,
   NotificationManager

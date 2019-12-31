@@ -1,6 +1,7 @@
 import React, { memo } from 'react';
 import { Divider, Header, Segment, Table } from 'semantic-ui-react';
-import { getBirthday } from '../../helpers';
+
+import { getBirthday } from '../../../helpers';
 
 const TableRow = ({ person, index }) => {
   const { firstName, lastName, dob } = person;

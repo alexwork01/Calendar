@@ -1,7 +1,7 @@
 import React, { memo } from 'react';
 import { Table, Dimmer, Segment, Placeholder } from 'semantic-ui-react';
 
-import { EclipseLoader } from '../EclipseLoader';
+import { EclipseLoader } from '../../EclipseLoader';
 
 export const TablePlaceholder = memo(() => (
   <Dimmer.Dimmable as={Segment} dimmed>

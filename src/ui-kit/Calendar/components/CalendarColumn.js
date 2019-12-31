@@ -1,6 +1,6 @@
 import React, { memo, useCallback } from 'react';
 
-import { MonthTitle, MonthWrapper } from './styled';
+import { MonthTitle, MonthWrapper } from '../styled';
 
 export const CalendarColumn = memo(props => {
   const { type, index, title, scrollToTable, setActiveMonthIndex } = props;

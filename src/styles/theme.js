@@ -4,7 +4,6 @@ const colors = {
   white: '#ffffff',
   whiteTransparent: 'rgba(255,255,255,.8)',
   black: 'rgba(0,0,0,.8)',
-
   red: '#DE2A28',
   blue: '#3885D0',
   grey: '#767676',
@@ -39,4 +38,5 @@ themeConfig.month = {
 };
 
 const theme = createTheme(...Object.keys(themeConfig));
+
 export default theme;

@@ -9,6 +9,10 @@ import {
 import { selectorGetApiUrl } from '../selectors';
 import { getPersons } from './restApi';
 
+export default function* watchAppSaga() {
+  yield takeLatest(GET_PERSONS_REQUEST, handlePersonsRequest);
+}
+
 function* handlePersonsRequest() {
   const url = yield select(selectorGetApiUrl);
 
@@ -18,13 +22,6 @@ function* handlePersonsRequest() {
 
   if (response) {
     yield put(actionGetRequestSuccess(response));
-    yield put(
-      actionSetNotification({
-        type: 'success',
-        message: 'The information was updated successfully!',
-        title: 'Success!'
-      })
-    );
   } else {
     yield put(
       actionSetNotification({
@@ -37,8 +34,4 @@ function* handlePersonsRequest() {
   }
 
   yield put(actionSetIsLoading(false));
-}
-
-export default function* watchAppSaga() {
-  yield takeLatest(GET_PERSONS_REQUEST, handlePersonsRequest);
 }

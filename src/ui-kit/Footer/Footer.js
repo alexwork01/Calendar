@@ -1,5 +1,6 @@
 import { Image } from 'semantic-ui-react';
 import React from 'react';
+
 import gitHubImg from '../../assets/GitHub-Mark-Light-32px.png';
 import { StyledLink, StyledTitle, FooterWrapper } from './styled';
 

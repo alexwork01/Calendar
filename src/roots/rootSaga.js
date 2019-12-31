@@ -1,4 +1,5 @@
 import { all, spawn, call } from 'redux-saga/effects';
+
 import watchAppSaga from '../sagas/appSaga';
 
 export default function* rootSaga() {
