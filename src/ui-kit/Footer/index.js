@@ -1,3 +1,5 @@
+import { withTheme } from 'styled-components';
+
 import Footer from './Footer';
 
-export default Footer;
+export default withTheme(Footer);

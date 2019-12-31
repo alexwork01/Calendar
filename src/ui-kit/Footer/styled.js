@@ -13,12 +13,17 @@ export const LinkWrapper = styled.div`
 `;
 
 export const StyledLink = styled.a`
-  color: #ffffff;
+  color: ${props => props.theme.textSecondary};
   text-decoration: underline;
 
-  &:hover: {
+  &:hover {
+    color: ${props => props.theme.textSecondary};
     cursor: pointer;
     text-decoration: none;
+  }
+
+  &:visited {
+    color: ${props => props.theme.textSecondary};
   }
 `;
 
