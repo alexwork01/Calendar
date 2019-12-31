@@ -6,14 +6,22 @@ export const FooterWrapper = styled(Segment)`
   padding: 5em 0 0 0 !important;
 `;
 
-export const StyledLink = styled.a`
+export const LinkWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  cursor: pointer;
+`;
+
+export const StyledLink = styled.a`
+  color: #ffffff;
+  text-decoration: underline;
+
+  &:hover: {
+    cursor: pointer;
+    text-decoration: none;
+  }
 `;
 
 export const StyledTitle = styled(Header)`
   margin: 0 0 0 1em;
-  color: #fff;
 `;

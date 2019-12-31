@@ -49,7 +49,7 @@ export const TableWrapper = styled.div`
 
 export const ButtonTop = styled(Button)`
   position: fixed;
-  bottom: 2em;
+  bottom: 1.5em;
   right: 1em;
   z-index: 10;
   box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.4) !important;
